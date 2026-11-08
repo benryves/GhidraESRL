@@ -1,0 +1,37 @@
+000000                   	; JUMP Command
+0E0000                   		org $E0000
+0E0000                   		pre_on
+0E0000                   	main:
+0E0000                   	; jr +
+0E0000 12 00             		jr *+2
+0E0002 18 00             		jrz *+2
+0E0004 1A 00             		jrnz *+2
+0E0006 1C 00             		jrc *+2
+0E0008 1E 00             		jrnc *+2
+0E000A                   	; jr -
+0E000A 13 0C             		jr main
+0E000C 19 0E             		jrz main
+0E000E 1B 10             		jrnz main
+0E0010 1D 12             		jrc main
+0E0012 1F 14             		jrnc main
+0E0014                   	; jp imm16
+0E0014 02 17 00          		jp *+3
+0E0017 14 1A 00          		jpz *+3
+0E001A 15 1D 00          		jpnz *+3
+0E001D 16 20 00          		jpc *+3
+0E0020 17 23 00          		jpnc *+3
+0E0023                   	; jpf imm20
+0E0023 03 27 00 0E       		jpf *+4
+0E0027                   	; jp r20
+0E0027 11 04             		jp x
+0E0029 11 05             		jp y
+0E002B 11 06             		jp u
+0E002D 11 07             		jp s
+0E002F                   	; jp (int)
+0E002F 30 10 11          		jp ($11)
+0E0032 10 11             		jp (bp+$11)
+0E0034 34 10 11          		jp (px+$11)
+0E0037 24 10 00          		jp (bp+px)
+0E003A                   		end
+
+  No fatal error.  Code: 0E0000h - 0E0039h [       58 byte(s)]

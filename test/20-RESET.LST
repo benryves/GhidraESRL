@@ -1,0 +1,10 @@
+000000                   	; RESET INTERRUPT Command
+0E0000                   		org $E0000
+0E0000                   		pre_on
+0E0000                   		
+0E0000 FF                		reset
+0E0001 FE                		int
+0E0002 01                		reti
+0E0003                   		end
+
+  No fatal error.  Code: 0E0000h - 0E0002h [        3 byte(s)]

@@ -1,0 +1,111 @@
+000000                   	; Exchange Command
+0E0000                   		org $E0000
+0E0000                   		pre_on
+0E0000                   		
+0E0000                   	; ex a,b
+0E0000 DD                		ex a,b
+0E0001                   		
+0E0001                   	; ex r16,r16
+0E0001 ED 22             		ex ba,ba
+0E0003 ED 32             		ex i,ba
+0E0005                   		
+0E0005 ED 23             		ex ba,i
+0E0007 ED 33             		ex i,i
+0E0009                   		
+0E0009                   	; ex r20,r20
+0E0009 ED 44             		ex x,x
+0E000B ED 54             		ex y,x
+0E000D ED 64             		ex u,x
+0E000F ED 74             		ex s,x
+0E0011                   		
+0E0011 ED 45             		ex x,y
+0E0013 ED 55             		ex y,y
+0E0015 ED 65             		ex u,y
+0E0017 ED 75             		ex s,y
+0E0019                   		
+0E0019 ED 46             		ex x,u
+0E001B ED 56             		ex y,u
+0E001D ED 66             		ex u,u
+0E001F ED 76             		ex s,u
+0E0021                   		
+0E0021 ED 47             		ex x,s
+0E0023 ED 57             		ex y,s
+0E0025 ED 67             		ex u,s
+0E0027 ED 77             		ex s,s
+0E0029                   		
+0E0029                   	; ex (int),(int)
+0E0029 32 C0 11 22       		ex ($11),($22)
+0E002D 22 C0 11 22       		ex (bp+$11),($22)
+0E0031 36 C0 11 22       		ex (px+$11),($22)
+0E0035 26 C0 00 22       		ex (bp+px),($22)
+0E0039 30 C0 11 22       		ex ($11),(bp+$22)
+0E003D C0 11 22          		ex (bp+$11),(bp+$22)
+0E0040 34 C0 11 22       		ex (px+$11),(bp+$22)
+0E0044 24 C0 00 22       		ex (bp+px),(bp+$22)
+0E0048 33 C0 11 22       		ex ($11),(py+$22)
+0E004C 23 C0 11 22       		ex (bp+$11),(py+$22)
+0E0050 37 C0 11 22       		ex (px+$11),(py+$22)
+0E0054 27 C0 00 22       		ex (bp+px),(py+$22)
+0E0058                   		
+0E0058 31 C0 11 00       		ex ($11),(bp+py)
+0E005C 21 C0 11 00       		ex (bp+$11),(bp+py)
+0E0060 35 C0 11 00       		ex (px+$11),(bp+py)
+0E0064 25 C0 00 00       		ex (bp+px),(bp+py)
+0E0068                   	; exw (int),(int)
+0E0068 32 C1 11 22       		exw ($11),($22)
+0E006C 22 C1 11 22       		exw (bp+$11),($22)
+0E0070 36 C1 11 22       		exw (px+$11),($22)
+0E0074 26 C1 00 22       		exw (bp+px),($22)
+0E0078 30 C1 11 22       		exw ($11),(bp+$22)
+0E007C C1 11 22          		exw (bp+$11),(bp+$22)
+0E007F 34 C1 11 22       		exw (px+$11),(bp+$22)
+0E0083 24 C1 00 22       		exw (bp+px),(bp+$22)
+0E0087 33 C1 11 22       		exw ($11),(py+$22)
+0E008B 23 C1 11 22       		exw (bp+$11),(py+$22)
+0E008F 37 C1 11 22       		exw (px+$11),(py+$22)
+0E0093 27 C1 00 22       		exw (bp+px),(py+$22)
+0E0097                   		
+0E0097 31 C1 11 00       		exw ($11),(bp+py)
+0E009B 21 C1 11 00       		exw (bp+$11),(bp+py)
+0E009F 35 C1 11 00       		exw (px+$11),(bp+py)
+0E00A3 25 C1 00 00       		exw (bp+px),(bp+py)
+0E00A7                   		
+0E00A7                   	; exp (int),(int)
+0E00A7 32 C2 11 22       		exp ($11),($22)
+0E00AB 22 C2 11 22       		exp (bp+$11),($22)
+0E00AF 36 C2 11 22       		exp (px+$11),($22)
+0E00B3 26 C2 00 22       		exp (bp+px),($22)
+0E00B7 30 C2 11 22       		exp ($11),(bp+$22)
+0E00BB C2 11 22          		exp (bp+$11),(bp+$22)
+0E00BE 34 C2 11 22       		exp (px+$11),(bp+$22)
+0E00C2 24 C2 00 22       		exp (bp+px),(bp+$22)
+0E00C6 33 C2 11 22       		exp ($11),(py+$22)
+0E00CA 23 C2 11 22       		exp (bp+$11),(py+$22)
+0E00CE 37 C2 11 22       		exp (px+$11),(py+$22)
+0E00D2 27 C2 00 22       		exp (bp+px),(py+$22)
+0E00D6                   		
+0E00D6 31 C2 11 00       		exp ($11),(bp+py)
+0E00DA 21 C2 11 00       		exp (bp+$11),(bp+py)
+0E00DE 35 C2 11 00       		exp (px+$11),(bp+py)
+0E00E2 25 C2 00 00       		exp (bp+px),(bp+py)
+0E00E6                   	; exl (int),(int)
+0E00E6 32 C3 11 22       		exl ($11),($22)
+0E00EA 22 C3 11 22       		exl (bp+$11),($22)
+0E00EE 36 C3 11 22       		exl (px+$11),($22)
+0E00F2 26 C3 00 22       		exl (bp+px),($22)
+0E00F6 30 C3 11 22       		exl ($11),(bp+$22)
+0E00FA C3 11 22          		exl (bp+$11),(bp+$22)
+0E00FD 34 C3 11 22       		exl (px+$11),(bp+$22)
+0E0101 24 C3 00 22       		exl (bp+px),(bp+$22)
+0E0105 33 C3 11 22       		exl ($11),(py+$22)
+0E0109 23 C3 11 22       		exl (bp+$11),(py+$22)
+0E010D 37 C3 11 22       		exl (px+$11),(py+$22)
+0E0111 27 C3 00 22       		exl (bp+px),(py+$22)
+0E0115                   		
+0E0115 31 C3 11 00       		exl ($11),(bp+py)
+0E0119 21 C3 11 00       		exl (bp+$11),(bp+py)
+0E011D 35 C3 11 00       		exl (px+$11),(bp+py)
+0E0121 25 C3 00 00       		exl (bp+px),(bp+py)
+0E0125                   		end
+
+  No fatal error.  Code: 0E0000h - 0E0124h [      293 byte(s)]

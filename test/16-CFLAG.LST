@@ -1,0 +1,8 @@
+000000                   	; C FLAG Control Command
+0E0000                   		org $E0000
+0E0000                   		pre_on
+0E0000 97                		sc
+0E0001 9F                		rc
+0E0002                   		end
+
+  No fatal error.  Code: 0E0000h - 0E0001h [        2 byte(s)]

@@ -1,0 +1,58 @@
+000000                   	; PUSH POP Command
+0E0000                   		org $E0000
+0E0000                   		pre_on
+0E0000                   	; pushu/popu f
+0E0000 2E                		pushu f
+0E0001 3E                		popu f
+0E0002                   	; pushu/popu imr
+0E0002 2F                		pushu imr
+0E0003 3F                		popu imr
+0E0004                   	; pushu/popu r8	
+0E0004                   		
+0E0004 28                		pushu a
+0E0005 38                		popu a
+0E0006                   		
+0E0006 29                		pushu il
+0E0007 39                		popu il
+0E0008                   	; pushu/popu r16
+0E0008 2A                		pushu ba
+0E0009 3A                		popu ba
+0E000A                   		
+0E000A 2B                		pushu i
+0E000B 3B                		popu i
+0E000C                   	; pushu/popu r20
+0E000C 2C                		pushu x
+0E000D 3C                		popu x
+0E000E                   		
+0E000E 2D                		pushu y
+0E000F 3D                		popu y
+0E0010                   		
+0E0010                   	; pushs/pops f
+0E0010 4F                		pushs f
+0E0011 5F                		pops f
+0E0012                   	; pushs/pops imr
+0E0012 30 E8 37 FB       		pushs imr
+0E0016 30 E0 27 FB       		pops imr
+0E001A                   	; pushu/popu r8	
+0E001A                   		
+0E001A B0 37             		pushs a
+0E001C 90 27             		pops a
+0E001E                   		
+0E001E B1 37             		pushs il
+0E0020 91 27             		pops il
+0E0022                   	; pushs/pops r16
+0E0022 B2 37             		pushs ba
+0E0024 92 27             		pops ba
+0E0026                   		
+0E0026 B3 37             		pushs i
+0E0028 93 27             		pops i
+0E002A                   		
+0E002A                   	; pushs/pops r20
+0E002A B4 37             		pushs x
+0E002C 94 27             		pops x
+0E002E                   		
+0E002E B5 37             		pushs y
+0E0030 95 27             		pops y
+0E0032                   		end
+
+  No fatal error.  Code: 0E0000h - 0E0031h [       50 byte(s)]

@@ -1,0 +1,13 @@
+000000                   	; CALL RETURN command
+0E0000                   		org $E0000
+0E0000                   		pre_on
+0E0000 04 07 00          		call sub
+0E0003                   		
+0E0003 05 08 00 0E       		callf subf
+0E0007                   	sub:
+0E0007 06                		ret
+0E0008                   	subf:
+0E0008 07                		retf
+0E0009                   		end
+
+  No fatal error.  Code: 0E0000h - 0E0008h [        9 byte(s)]

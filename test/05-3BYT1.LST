@@ -1,0 +1,406 @@
+000000                   	; 3 Byte Transmission Command No. 1
+0E0000                   		org $E0000
+0E0000                   		pre_on
+0E0000                   		
+0E0000                   	; mv r20,imm20
+0E0000 0C 45 23 01       		mv x,$12345
+0E0004 0D 45 23 01       		mv y,$12345
+0E0008 0E 45 23 01       		mv u,$12345
+0E000C 0F 45 23 01       		mv s,$12345
+0E0010                   	; mvp (int),imm20
+0E0010 30 DC 11 56 34 02 		mvp ($11),$23456
+0E0016 DC 11 56 34 02    		mvp (bp+$11),$23456
+0E001B 34 DC 11 56 34 02 		mvp (px+$11),$23456
+0E0021 24 DC 00 56 34 02 		mvp (bp+px),$23456
+0E0027                   	; mv r20,r20
+0E0027 FD 44             		mv x,x
+0E0029 FD 54             		mv y,x
+0E002B FD 64             		mv u,x
+0E002D FD 74             		mv s,x
+0E002F FD 45             		mv x,y
+0E0031 FD 55             		mv y,y
+0E0033 FD 65             		mv u,y
+0E0035 FD 75             		mv s,y
+0E0037                   		
+0E0037 FD 46             		mv x,u
+0E0039 FD 56             		mv y,u
+0E003B FD 66             		mv u,u
+0E003D FD 76             		mv s,u
+0E003F                   		
+0E003F FD 47             		mv x,s
+0E0041 FD 57             		mv y,s
+0E0043 FD 67             		mv u,s
+0E0045 FD 77             		mv s,s
+0E0047                   	; mv (int),r20
+0E0047 30 A4 11          		mv ($11),x
+0E004A A4 11             		mv (bp+$11),x
+0E004C 34 A4 11          		mv (px+$11),x
+0E004F 24 A4 00          		mv (bp+px),x
+0E0052 30 A5 11          		mv ($11),y
+0E0055 A5 11             		mv (bp+$11),y
+0E0057 34 A5 11          		mv (px+$11),y
+0E005A 24 A5 00          		mv (bp+px),y
+0E005D 30 A6 11          		mv ($11),u
+0E0060 A6 11             		mv (bp+$11),u
+0E0062 34 A6 11          		mv (px+$11),u
+0E0065 24 A6 00          		mv (bp+px),u
+0E0068 30 A7 11          		mv ($11),s
+0E006B A7 11             		mv (bp+$11),s
+0E006D 34 A7 11          		mv (px+$11),s
+0E0070 24 A7 00          		mv (bp+px),s
+0E0073                   	; mv [imm20],r20
+0E0073 AC 45 23 01       		mv [$12345],x
+0E0077 AD 45 23 01       		mv [$12345],y
+0E007B AE 45 23 01       		mv [$12345],u
+0E007F AF 45 23 01       		mv [$12345],s
+0E0083                   	; mv [r20],r20
+0E0083 B4 04             		mv [x],x
+0E0085 B4 05             		mv [y],x
+0E0087 B4 06             		mv [u],x
+0E0089 B4 07             		mv [s],x
+0E008B                   		
+0E008B B5 04             		mv [x],y
+0E008D B5 05             		mv [y],y
+0E008F B5 06             		mv [u],y
+0E0091 B5 07             		mv [s],y
+0E0093                   		
+0E0093 B6 04             		mv [x],u
+0E0095 B6 05             		mv [y],u
+0E0097 B6 06             		mv [u],u
+0E0099 B6 07             		mv [s],u
+0E009B                   		
+0E009B                   	; mv [r20++],r20
+0E009B B4 24             		mv [x++],x
+0E009D B4 25             		mv [y++],x
+0E009F B4 26             		mv [u++],x
+0E00A1 B4 27             		mv [s++],x
+0E00A3                   		
+0E00A3 B5 24             		mv [x++],y
+0E00A5 B5 25             		mv [y++],y
+0E00A7 B5 26             		mv [u++],y
+0E00A9 B5 27             		mv [s++],y
+0E00AB                   		
+0E00AB B6 24             		mv [x++],u
+0E00AD B6 25             		mv [y++],u
+0E00AF B6 26             		mv [u++],u
+0E00B1 B6 27             		mv [s++],u
+0E00B3                   	; mv [--r20],r20
+0E00B3 B4 34             		mv [--x],x
+0E00B5 B4 35             		mv [--y],x
+0E00B7 B4 36             		mv [--u],x
+0E00B9 B4 37             		mv [--s],x
+0E00BB                   		
+0E00BB B5 34             		mv [--x],y
+0E00BD B5 35             		mv [--y],y
+0E00BF B5 36             		mv [--u],y
+0E00C1 B5 37             		mv [--s],y
+0E00C3                   		
+0E00C3 B6 34             		mv [--x],u
+0E00C5 B6 35             		mv [--y],u
+0E00C7 B6 36             		mv [--u],u
+0E00C9 B6 37             		mv [--s],u
+0E00CB                   	; mv [r20+off],r20
+0E00CB B4 84 11          		mv [x+$11],x
+0E00CE B4 85 11          		mv [y+$11],x
+0E00D1 B4 86 11          		mv [u+$11],x
+0E00D4 B4 87 11          		mv [s+$11],x
+0E00D7                   		
+0E00D7 B5 84 11          		mv [x+$11],y
+0E00DA B5 85 11          		mv [y+$11],y
+0E00DD B5 86 11          		mv [u+$11],y
+0E00E0 B5 87 11          		mv [s+$11],y
+0E00E3                   		
+0E00E3 B6 84 11          		mv [x+$11],u
+0E00E6 B6 85 11          		mv [y+$11],u
+0E00E9 B6 86 11          		mv [u+$11],u
+0E00EC B6 87 11          		mv [s+$11],u
+0E00EF                   		
+0E00EF B4 C4 11          		mv [x-$11],x
+0E00F2 B4 C5 11          		mv [y-$11],x
+0E00F5 B4 C6 11          		mv [u-$11],x
+0E00F8 B4 C7 11          		mv [s-$11],x
+0E00FB                   		
+0E00FB B5 C4 11          		mv [x-$11],y
+0E00FE B5 C5 11          		mv [y-$11],y
+0E0101 B5 C6 11          		mv [u-$11],y
+0E0104 B5 C7 11          		mv [s-$11],y
+0E0107                   		
+0E0107 B6 C4 11          		mv [x-$11],u
+0E010A B6 C5 11          		mv [y-$11],u
+0E010D B6 C6 11          		mv [u-$11],u
+0E0110 B6 C7 11          		mv [s-$11],u
+0E0113                   	; mv [(int)],r20
+0E0113 30 BC 00 11       		mv [($11)],x
+0E0117 BC 00 11          		mv [(bp+$11)],x
+0E011A 34 BC 00 11       		mv [(px+$11)],x
+0E011E 24 BC 00 00       		mv [(bp+px)],x
+0E0122 30 BD 00 11       		mv [($11)],y
+0E0126 BD 00 11          		mv [(bp+$11)],y
+0E0129 34 BD 00 11       		mv [(px+$11)],y
+0E012D 24 BD 00 00       		mv [(bp+px)],y
+0E0131 30 BE 00 11       		mv [($11)],u
+0E0135 BE 00 11          		mv [(bp+$11)],u
+0E0138 34 BE 00 11       		mv [(px+$11)],u
+0E013C 24 BE 00 00       		mv [(bp+px)],u
+0E0140                   	; mv [(int)+off],r20
+0E0140 30 BC 80 11 22    		mv [($11)+$22],x
+0E0145 BC 80 11 22       		mv [(bp+$11)+$22],x
+0E0149 34 BC 80 11 22    		mv [(px+$11)+$22],x
+0E014E 24 BC 80 00 22    		mv [(bp+px)+$22],x
+0E0153 30 BD 80 11 22    		mv [($11)+$22],y
+0E0158 BD 80 11 22       		mv [(bp+$11)+$22],y
+0E015C 34 BD 80 11 22    		mv [(px+$11)+$22],y
+0E0161 24 BD 80 00 22    		mv [(bp+px)+$22],y
+0E0166 30 BE 80 11 22    		mv [($11)+$22],u
+0E016B BE 80 11 22       		mv [(bp+$11)+$22],u
+0E016F 34 BE 80 11 22    		mv [(px+$11)+$22],u
+0E0174 24 BE 80 00 22    		mv [(bp+px)+$22],u
+0E0179 30 BC C0 11 22    		mv [($11)-$22],x
+0E017E BC C0 11 22       		mv [(bp+$11)-$22],x
+0E0182 34 BC C0 11 22    		mv [(px+$11)-$22],x
+0E0187 24 BC C0 00 22    		mv [(bp+px)-$22],x
+0E018C 30 BD C0 11 22    		mv [($11)-$22],y
+0E0191 BD C0 11 22       		mv [(bp+$11)-$22],y
+0E0195 34 BD C0 11 22    		mv [(px+$11)-$22],y
+0E019A 24 BD C0 00 22    		mv [(bp+px)-$22],y
+0E019F 30 BE C0 11 22    		mv [($11)-$22],u
+0E01A4 BE C0 11 22       		mv [(bp+$11)-$22],u
+0E01A8 34 BE C0 11 22    		mv [(px+$11)-$22],u
+0E01AD 24 BE C0 00 22    		mv [(bp+px)-$22],u
+0E01B2                   	; mv r20,(int)
+0E01B2 30 84 22          		mv x,($22)
+0E01B5 84 22             		mv x,(bp+$22)
+0E01B7 34 84 22          		mv x,(px+$22)
+0E01BA 24 84 00          		mv x,(bp+px)
+0E01BD 30 85 22          		mv y,($22)
+0E01C0 85 22             		mv y,(bp+$22)
+0E01C2 34 85 22          		mv y,(px+$22)
+0E01C5 24 85 00          		mv y,(bp+px)
+0E01C8 30 86 22          		mv u,($22)
+0E01CB 86 22             		mv u,(bp+$22)
+0E01CD 34 86 22          		mv u,(px+$22)
+0E01D0 24 86 00          		mv u,(bp+px)
+0E01D3 30 87 22          		mv s,($22)
+0E01D6 87 22             		mv s,(bp+$22)
+0E01D8 34 87 22          		mv s,(px+$22)
+0E01DB 24 87 00          		mv s,(bp+px)
+0E01DE                   	; mvp (int),(int)
+0E01DE 32 CA 11 22       		mvp ($11),($22)
+0E01E2 22 CA 11 22       		mvp (bp+$11),($22)
+0E01E6 36 CA 11 22       		mvp (px+$11),($22)
+0E01EA 26 CA 00 22       		mvp (bp+px),($22)
+0E01EE                   		
+0E01EE 30 CA 11 22       		mvp ($11),(bp+$22)
+0E01F2 CA 11 22          		mvp (bp+$11),(bp+$22)
+0E01F5 34 CA 11 22       		mvp (px+$11),(bp+$22)
+0E01F9 24 CA 00 22       		mvp (bp+px),(bp+$22)
+0E01FD                   		
+0E01FD 33 CA 11 22       		mvp ($11),(py+$22)
+0E0201 23 CA 11 22       		mvp (bp+$11),(py+$22)
+0E0205 37 CA 11 22       		mvp (px+$11),(py+$22)
+0E0209 27 CA 00 22       		mvp (bp+px),(py+$22)
+0E020D                   		
+0E020D 31 CA 11 00       		mvp ($11),(bp+py)
+0E0211 21 CA 11 00       		mvp (bp+$11),(bp+py)
+0E0215 35 CA 11 00       		mvp (px+$11),(bp+py)
+0E0219 25 CA 00 00       		mvp (bp+px),(bp+py)
+0E021D                   		
+0E021D                   	; mvp [imm20],(int)
+0E021D 30 DA 45 23 01 22 		mvp [$12345],($22)
+0E0223 DA 45 23 01 22    		mvp [$12345],(bp+$22)
+0E0228 34 DA 45 23 01 22 		mvp [$12345],(px+$22)
+0E022E 24 DA 45 23 01 00 		mvp [$12345],(bp+px)
+0E0234                   	; mvp [r20],(int)
+0E0234 30 EA 04 22       		mvp [x],($22)
+0E0238 EA 04 22          		mvp [x],(bp+$22)
+0E023B 34 EA 04 22       		mvp [x],(px+$22)
+0E023F 24 EA 04 00       		mvp [x],(bp+px)
+0E0243 30 EA 05 22       		mvp [y],($22)
+0E0247 EA 05 22          		mvp [y],(bp+$22)
+0E024A 34 EA 05 22       		mvp [y],(px+$22)
+0E024E 24 EA 05 00       		mvp [y],(bp+px)
+0E0252 30 EA 06 22       		mvp [u],($22)
+0E0256 EA 06 22          		mvp [u],(bp+$22)
+0E0259 34 EA 06 22       		mvp [u],(px+$22)
+0E025D 24 EA 06 00       		mvp [u],(bp+px)
+0E0261 30 EA 07 22       		mvp [s],($22)
+0E0265 EA 07 22          		mvp [s],(bp+$22)
+0E0268 34 EA 07 22       		mvp [s],(px+$22)
+0E026C 24 EA 07 00       		mvp [s],(bp+px)
+0E0270                   	; mvp [r20++],(int)
+0E0270 30 EA 24 22       		mvp [x++],($22)
+0E0274 EA 24 22          		mvp [x++],(bp+$22)
+0E0277 34 EA 24 22       		mvp [x++],(px+$22)
+0E027B 24 EA 24 00       		mvp [x++],(bp+px)
+0E027F 30 EA 25 22       		mvp [y++],($22)
+0E0283 EA 25 22          		mvp [y++],(bp+$22)
+0E0286 34 EA 25 22       		mvp [y++],(px+$22)
+0E028A 24 EA 25 00       		mvp [y++],(bp+px)
+0E028E 30 EA 26 22       		mvp [u++],($22)
+0E0292 EA 26 22          		mvp [u++],(bp+$22)
+0E0295 34 EA 26 22       		mvp [u++],(px+$22)
+0E0299 24 EA 26 00       		mvp [u++],(bp+px)
+0E029D 30 EA 27 22       		mvp [s++],($22)
+0E02A1 EA 27 22          		mvp [s++],(bp+$22)
+0E02A4 34 EA 27 22       		mvp [s++],(px+$22)
+0E02A8 24 EA 27 00       		mvp [s++],(bp+px)
+0E02AC                   	; mvp [--r20],(int)
+0E02AC 30 EA 34 22       		mvp [--x],($22)
+0E02B0 EA 34 22          		mvp [--x],(bp+$22)
+0E02B3 34 EA 34 22       		mvp [--x],(px+$22)
+0E02B7 24 EA 34 00       		mvp [--x],(bp+px)
+0E02BB 30 EA 35 22       		mvp [--y],($22)
+0E02BF EA 35 22          		mvp [--y],(bp+$22)
+0E02C2 34 EA 35 22       		mvp [--y],(px+$22)
+0E02C6 24 EA 35 00       		mvp [--y],(bp+px)
+0E02CA 30 EA 36 22       		mvp [--u],($22)
+0E02CE EA 36 22          		mvp [--u],(bp+$22)
+0E02D1 34 EA 36 22       		mvp [--u],(px+$22)
+0E02D5 24 EA 36 00       		mvp [--u],(bp+px)
+0E02D9 30 EA 37 22       		mvp [--s],($22)
+0E02DD EA 37 22          		mvp [--s],(bp+$22)
+0E02E0 34 EA 37 22       		mvp [--s],(px+$22)
+0E02E4 24 EA 37 00       		mvp [--s],(bp+px)
+0E02E8                   	; mvp [r20+off],(int)
+0E02E8 30 EA 84 22 11    		mvp [x+$11],($22)
+0E02ED EA 84 22 11       		mvp [x+$11],(bp+$22)
+0E02F1 34 EA 84 22 11    		mvp [x+$11],(px+$22)
+0E02F6 24 EA 84 00 11    		mvp [x+$11],(bp+px)
+0E02FB 30 EA 85 22 11    		mvp [y+$11],($22)
+0E0300 EA 85 22 11       		mvp [y+$11],(bp+$22)
+0E0304 34 EA 85 22 11    		mvp [y+$11],(px+$22)
+0E0309 24 EA 85 00 11    		mvp [y+$11],(bp+px)
+0E030E 30 EA 86 22 11    		mvp [u+$11],($22)
+0E0313 EA 86 22 11       		mvp [u+$11],(bp+$22)
+0E0317 34 EA 86 22 11    		mvp [u+$11],(px+$22)
+0E031C 24 EA 86 00 11    		mvp [u+$11],(bp+px)
+0E0321 30 EA 87 22 11    		mvp [s+$11],($22)
+0E0326 EA 87 22 11       		mvp [s+$11],(bp+$22)
+0E032A 34 EA 87 22 11    		mvp [s+$11],(px+$22)
+0E032F 24 EA 87 00 11    		mvp [s+$11],(bp+px)
+0E0334                   		
+0E0334 30 EA C4 22 11    		mvp [x-$11],($22)
+0E0339 EA C4 22 11       		mvp [x-$11],(bp+$22)
+0E033D 34 EA C4 22 11    		mvp [x-$11],(px+$22)
+0E0342 24 EA C4 00 11    		mvp [x-$11],(bp+px)
+0E0347 30 EA C5 22 11    		mvp [y-$11],($22)
+0E034C EA C5 22 11       		mvp [y-$11],(bp+$22)
+0E0350 34 EA C5 22 11    		mvp [y-$11],(px+$22)
+0E0355 24 EA C5 00 11    		mvp [y-$11],(bp+px)
+0E035A 30 EA C6 22 11    		mvp [u-$11],($22)
+0E035F EA C6 22 11       		mvp [u-$11],(bp+$22)
+0E0363 34 EA C6 22 11    		mvp [u-$11],(px+$22)
+0E0368 24 EA C6 00 11    		mvp [u-$11],(bp+px)
+0E036D 30 EA C7 22 11    		mvp [s-$11],($22)
+0E0372 EA C7 22 11       		mvp [s-$11],(bp+$22)
+0E0376 34 EA C7 22 11    		mvp [s-$11],(px+$22)
+0E037B 24 EA C7 00 11    		mvp [s-$11],(bp+px)
+0E0380                   	; mvp [(int)],(int)
+0E0380 32 FA 00 11 22    		mvp [($11)],($22)
+0E0385 22 FA 00 11 22    		mvp [(bp+$11)],($22)
+0E038A 36 FA 00 11 22    		mvp [(px+$11)],($22)
+0E038F 26 FA 00 00 22    		mvp [(bp+px)],($22)
+0E0394                   		
+0E0394 30 FA 00 11 22    		mvp [($11)],(bp+$22)
+0E0399 FA 00 11 22       		mvp [(bp+$11)],(bp+$22)
+0E039D 34 FA 00 11 22    		mvp [(px+$11)],(bp+$22)
+0E03A2 24 FA 00 00 22    		mvp [(bp+px)],(bp+$22)
+0E03A7                   		
+0E03A7 33 FA 00 11 22    		mvp [($11)],(py+$22)
+0E03AC 23 FA 00 11 22    		mvp [(bp+$11)],(py+$22)
+0E03B1 37 FA 00 11 22    		mvp [(px+$11)],(py+$22)
+0E03B6 27 FA 00 00 22    		mvp [(bp+px)],(py+$22)
+0E03BB                   		
+0E03BB 31 FA 00 11 00    		mvp [($11)],(bp+py)
+0E03C0 21 FA 00 11 00    		mvp [(bp+$11)],(bp+py)
+0E03C5 35 FA 00 11 00    		mvp [(px+$11)],(bp+py)
+0E03CA 25 FA 00 00 00    		mvp [(bp+px)],(bp+py)
+0E03CF                   	; mvp [(int)+off],(int)
+0E03CF 32 FA 80 11 33 22 		mvp [($11)+$22],($33)
+0E03D5 22 FA 80 11 33 22 		mvp [(bp+$11)+$22],($33)
+0E03DB 36 FA 80 11 33 22 		mvp [(px+$11)+$22],($33)
+0E03E1 26 FA 80 00 33 22 		mvp [(bp+px)+$22],($33)
+0E03E7                   		
+0E03E7 30 FA 80 11 33 22 		mvp [($11)+$22],(bp+$33)
+0E03ED FA 80 11 33 22    		mvp [(bp+$11)+$22],(bp+$33)
+0E03F2 34 FA 80 11 33 22 		mvp [(px+$11)+$22],(bp+$33)
+0E03F8 24 FA 80 00 33 22 		mvp [(bp+px)+$22],(bp+$33)
+0E03FE                   		
+0E03FE 33 FA 80 11 33 22 		mvp [($11)+$22],(py+$33)
+0E0404 23 FA 80 11 33 22 		mvp [(bp+$11)+$22],(py+$33)
+0E040A 37 FA 80 11 33 22 		mvp [(px+$11)+$22],(py+$33)
+0E0410 27 FA 80 00 33 22 		mvp [(bp+px)+$22],(py+$33)
+0E0416                   		
+0E0416 31 FA 80 11 00 22 		mvp [($11)+$22],(bp+py)
+0E041C 21 FA 80 11 00 22 		mvp [(bp+$11)+$22],(bp+py)
+0E0422 35 FA 80 11 00 22 		mvp [(px+$11)+$22],(bp+py)
+0E0428 25 FA 80 00 00 22 		mvp [(bp+px)+$22],(bp+py)
+0E042E 32 FA C0 11 33 22 		mvp [($11)-$22],($33)
+0E0434 22 FA C0 11 33 22 		mvp [(bp+$11)-$22],($33)
+0E043A 36 FA C0 11 33 22 		mvp [(px+$11)-$22],($33)
+0E0440 26 FA C0 00 33 22 		mvp [(bp+px)-$22],($33)
+0E0446                   		
+0E0446 30 FA C0 11 33 22 		mvp [($11)-$22],(bp+$33)
+0E044C FA C0 11 33 22    		mvp [(bp+$11)-$22],(bp+$33)
+0E0451 34 FA C0 11 33 22 		mvp [(px+$11)-$22],(bp+$33)
+0E0457 24 FA C0 00 33 22 		mvp [(bp+px)-$22],(bp+$33)
+0E045D                   		
+0E045D 33 FA C0 11 33 22 		mvp [($11)-$22],(py+$33)
+0E0463 23 FA C0 11 33 22 		mvp [(bp+$11)-$22],(py+$33)
+0E0469 37 FA C0 11 33 22 		mvp [(px+$11)-$22],(py+$33)
+0E046F 27 FA C0 00 33 22 		mvp [(bp+px)-$22],(py+$33)
+0E0475                   		
+0E0475 31 FA C0 11 00 22 		mvp [($11)-$22],(bp+py)
+0E047B 21 FA C0 11 00 22 		mvp [(bp+$11)-$22],(bp+py)
+0E0481 35 FA C0 11 00 22 		mvp [(px+$11)-$22],(bp+py)
+0E0487 25 FA C0 00 00 22 		mvp [(bp+px)-$22],(bp+py)
+0E048D                   	; mv r20,[imm20]
+0E048D                   		
+0E048D 8C 45 23 01       		mv x,[$12345]
+0E0491 8D 45 23 01       		mv y,[$12345]
+0E0495 8E 45 23 01       		mv u,[$12345]
+0E0499 8F 45 23 01       		mv s,[$12345]
+0E049D                   	; mvp (int),[imm20]
+0E049D 30 D2 11 45 23 01 		mvp ($11),[$12345]
+0E04A3 D2 11 45 23 01    		mvp (bp+$11),[$12345]
+0E04A8 34 D2 11 45 23 01 		mvp (px+$11),[$12345]
+0E04AE 24 D2 00 45 23 01 		mvp (bp+px),[$12345]
+0E04B4                   	; mv r20,[r20]
+0E04B4                   		
+0E04B4 94 04             		mv x,[x]
+0E04B6 95 04             		mv y,[x]
+0E04B8 96 04             		mv u,[x]
+0E04BA                   		
+0E04BA 94 05             		mv x,[y]
+0E04BC 95 05             		mv y,[y]
+0E04BE 96 05             		mv u,[y]
+0E04C0 94 06             		mv x,[u]
+0E04C2 95 06             		mv y,[u]
+0E04C4 96 06             		mv u,[u]
+0E04C6                   		
+0E04C6 94 07             		mv x,[s]
+0E04C8 95 07             		mv y,[s]
+0E04CA 96 07             		mv u,[s]
+0E04CC                   	; mvp (int),[r20]
+0E04CC 30 E2 04 11       		mvp ($11),[x]
+0E04D0 E2 04 11          		mvp (bp+$11),[x]
+0E04D3 34 E2 04 11       		mvp (px+$11),[x]
+0E04D7 24 E2 04 00       		mvp (bp+px),[x]
+0E04DB                   		
+0E04DB 30 E2 05 11       		mvp ($11),[y]
+0E04DF E2 05 11          		mvp (bp+$11),[y]
+0E04E2 34 E2 05 11       		mvp (px+$11),[y]
+0E04E6 24 E2 05 00       		mvp (bp+px),[y]
+0E04EA                   		
+0E04EA 30 E2 06 11       		mvp ($11),[u]
+0E04EE E2 06 11          		mvp (bp+$11),[u]
+0E04F1 34 E2 06 11       		mvp (px+$11),[u]
+0E04F5 24 E2 06 00       		mvp (bp+px),[u]
+0E04F9                   		
+0E04F9 30 E2 07 11       		mvp ($11),[s]
+0E04FD E2 07 11          		mvp (bp+$11),[s]
+0E0500 34 E2 07 11       		mvp (px+$11),[s]
+0E0504 24 E2 07 00       		mvp (bp+px),[s]
+0E0508                   		end
+
+  No fatal error.  Code: 0E0000h - 0E0507h [     1288 byte(s)]

@@ -1,0 +1,78 @@
+000000                   	; Monadic Operation
+0E0000                   		org $E0000
+0E0000                   		pre_on
+0E0000                   	; swap a
+0E0000 EE                		swap a
+0E0001                   	; inc/dec r8
+0E0001 6C 00             		inc a
+0E0003 6C 01             		inc il
+0E0005                   		
+0E0005 7C 00             		dec a
+0E0007 7C 01             		dec il
+0E0009                   	; inc/dec r16
+0E0009 6C 02             		inc ba
+0E000B 6C 03             		inc i
+0E000D                   		
+0E000D 7C 02             		dec ba
+0E000F 7C 03             		dec i	
+0E0011                   	; inc/dec r20
+0E0011 6C 04             		inc x
+0E0013 6C 05             		inc y
+0E0015 6C 06             		inc u
+0E0017 6C 07             		inc s
+0E0019                   		
+0E0019 7C 04             		dec x
+0E001B 7C 05             		dec y
+0E001D 7C 06             		dec u
+0E001F 7C 07             		dec s
+0E0021                   		
+0E0021                   	; inc/dec (int)
+0E0021                   		
+0E0021 30 6D 11          		inc ($11)
+0E0024 6D 11             		inc (bp+$11)
+0E0026 34 6D 11          		inc (px+$11)
+0E0029 24 6D 00          		inc (bp+px)
+0E002C                   		
+0E002C 30 7D 11          		dec ($11)
+0E002F 7D 11             		dec (bp+$11)
+0E0031 34 7D 11          		dec (px+$11)
+0E0034 24 7D 00          		dec (bp+px)
+0E0037                   	; ror/rol a
+0E0037 E4                		ror a
+0E0038 E6                		rol a
+0E0039                   	; ror/rol (int)
+0E0039 30 E5 11          		ror ($11)
+0E003C E5 11             		ror (bp+$11)
+0E003E 34 E5 11          		ror (px+$11)
+0E0041 24 E5 00          		ror (bp+px)
+0E0044                   		
+0E0044 30 E7 11          		rol ($11)
+0E0047 E7 11             		rol (bp+$11)
+0E0049 34 E7 11          		rol (px+$11)
+0E004C 24 E7 00          		rol (bp+px)
+0E004F                   	; shr/shl a
+0E004F F4                		shr a
+0E0050 F6                		shl a
+0E0051                   	; shr/shl (int)
+0E0051 30 F5 11          		shr ($11)
+0E0054 F5 11             		shr (bp+$11)
+0E0056 34 F5 11          		shr (px+$11)
+0E0059 24 F5 00          		shr (bp+px)
+0E005C                   		
+0E005C 30 F7 11          		shl ($11)
+0E005F F7 11             		shl (bp+$11)
+0E0061 34 F7 11          		shl (px+$11)
+0E0064 24 F7 00          		shl (bp+px)
+0E0067                   	; dsrl/dsll (int)
+0E0067 30 FC 11          		dsrl ($11)
+0E006A FC 11             		dsrl (bp+$11)
+0E006C 34 FC 11          		dsrl (px+$11)
+0E006F 24 FC 00          		dsrl (bp+px)
+0E0072                   		
+0E0072 30 EC 11          		dsll ($11)
+0E0075 EC 11             		dsll (bp+$11)
+0E0077 34 EC 11          		dsll (px+$11)
+0E007A 24 EC 00          		dsll (bp+px)
+0E007D                   		end
+
+  No fatal error.  Code: 0E0000h - 0E007Ch [      125 byte(s)]

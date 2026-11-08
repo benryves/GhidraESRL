@@ -1,0 +1,23 @@
+000000                   	; Dyadic Operation No.5 (Test Command)
+0E0000                   		org $E0000
+0E0000                   		pre_on
+0E0000                   	; test a,n
+0E0000                   		
+0E0000 64 22             		test a,$22
+0E0002                   	; test (int),n
+0E0002 30 65 11 22       		test ($11),$22
+0E0006 65 11 22          		test (bp+$11),$22
+0E0009 34 65 11 22       		test (px+$11),$22
+0E000D 24 65 00 22       		test (bp+px),$22
+0E0011                   	; test [imm20],n
+0E0011                   		
+0E0011 66 45 23 01 22    		test [$12345],$22
+0E0016                   	; test (int),a
+0E0016                   		
+0E0016 30 67 11          		test ($11),a
+0E0019 67 11             		test (bp+$11),a
+0E001B 34 67 11          		test (px+$11),a
+0E001E 24 67 00          		test (bp+px),a
+0E0021                   		end
+
+  No fatal error.  Code: 0E0000h - 0E0020h [       33 byte(s)]

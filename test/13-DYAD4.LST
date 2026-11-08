@@ -1,0 +1,114 @@
+000000                   	; Dyadic Operation No.4 (Compare Command)
+0E0000                   		org $E0000
+0E0000                   		pre_on
+0E0000                   		
+0E0000                   	; cmp a,n
+0E0000 60 22             		cmp a,$22
+0E0002                   	; cmp (int),n
+0E0002 30 61 11 22       		cmp ($11),$22
+0E0006 61 11 22          		cmp (bp+$11),$22
+0E0009 34 61 11 22       		cmp (px+$11),$22
+0E000D 24 61 00 22       		cmp (bp+px),$22
+0E0011                   	; cmp [imm20],n
+0E0011                   		
+0E0011 62 45 23 01 22    		cmp [$12345],$22
+0E0016                   	; cmp (int),a
+0E0016 30 63 11          		cmp ($11),a
+0E0019 63 11             		cmp (bp+$11),a
+0E001B 34 63 11          		cmp (px+$11),a
+0E001E 24 63 00          		cmp (bp+px),a
+0E0021                   		
+0E0021                   	; cmpw (int),r16
+0E0021 30 D6 02 11       		cmpw ($11),ba
+0E0025 D6 02 11          		cmpw (bp+$11),ba
+0E0028 34 D6 02 11       		cmpw (px+$11),ba
+0E002C 24 D6 02 00       		cmpw (bp+px),ba
+0E0030                   		
+0E0030 30 D6 03 11       		cmpw ($11),i
+0E0034 D6 03 11          		cmpw (bp+$11),i
+0E0037 34 D6 03 11       		cmpw (px+$11),i
+0E003B 24 D6 03 00       		cmpw (bp+px),i
+0E003F                   	; cmpp (int),r20
+0E003F 30 D7 04 11       		cmpp ($11),x
+0E0043 D7 04 11          		cmpp (bp+$11),x
+0E0046 34 D7 04 11       		cmpp (px+$11),x
+0E004A 24 D7 04 00       		cmpp (bp+px),x
+0E004E                   		
+0E004E 30 D7 05 11       		cmpp ($11),y
+0E0052 D7 05 11          		cmpp (bp+$11),y
+0E0055 34 D7 05 11       		cmpp (px+$11),y
+0E0059 24 D7 05 00       		cmpp (bp+px),y
+0E005D                   		
+0E005D 30 D7 06 11       		cmpp ($11),u
+0E0061 D7 06 11          		cmpp (bp+$11),u
+0E0064 34 D7 06 11       		cmpp (px+$11),u
+0E0068 24 D7 06 00       		cmpp (bp+px),u
+0E006C                   		
+0E006C 30 D7 07 11       		cmpp ($11),s
+0E0070 D7 07 11          		cmpp (bp+$11),s
+0E0073 34 D7 07 11       		cmpp (px+$11),s
+0E0077 24 D7 07 00       		cmpp (bp+px),s
+0E007B                   	; cmp (int),(int)
+0E007B                   		
+0E007B 32 B7 11 22       		cmp ($11),($22)
+0E007F 22 B7 11 22       		cmp (bp+$11),($22)
+0E0083 36 B7 11 22       		cmp (px+$11),($22)
+0E0087 26 B7 00 22       		cmp (bp+px),($22)
+0E008B                   		
+0E008B 30 B7 11 22       		cmp ($11),(bp+$22)
+0E008F B7 11 22          		cmp (bp+$11),(bp+$22)
+0E0092 34 B7 11 22       		cmp (px+$11),(bp+$22)
+0E0096 24 B7 00 22       		cmp (bp+px),(bp+$22)
+0E009A                   		
+0E009A 33 B7 11 22       		cmp ($11),(py+$22)
+0E009E 23 B7 11 22       		cmp (bp+$11),(py+$22)
+0E00A2 37 B7 11 22       		cmp (px+$11),(py+$22)
+0E00A6 27 B7 00 22       		cmp (bp+px),(py+$22)
+0E00AA                   		
+0E00AA 31 B7 11 00       		cmp ($11),(bp+py)
+0E00AE 21 B7 11 00       		cmp (bp+$11),(bp+py)
+0E00B2 35 B7 11 00       		cmp (px+$11),(bp+py)
+0E00B6 25 B7 00 00       		cmp (bp+px),(bp+py)
+0E00BA                   	; cmpw (int),(int)
+0E00BA 32 C6 11 22       		cmpw ($11),($22)
+0E00BE 22 C6 11 22       		cmpw (bp+$11),($22)
+0E00C2 36 C6 11 22       		cmpw (px+$11),($22)
+0E00C6 26 C6 00 22       		cmpw (bp+px),($22)
+0E00CA                   		
+0E00CA 30 C6 11 22       		cmpw ($11),(bp+$22)
+0E00CE C6 11 22          		cmpw (bp+$11),(bp+$22)
+0E00D1 34 C6 11 22       		cmpw (px+$11),(bp+$22)
+0E00D5 24 C6 00 22       		cmpw (bp+px),(bp+$22)
+0E00D9                   		
+0E00D9 33 C6 11 22       		cmpw ($11),(py+$22)
+0E00DD 23 C6 11 22       		cmpw (bp+$11),(py+$22)
+0E00E1 37 C6 11 22       		cmpw (px+$11),(py+$22)
+0E00E5 27 C6 00 22       		cmpw (bp+px),(py+$22)
+0E00E9                   		
+0E00E9 31 C6 11 00       		cmpw ($11),(bp+py)
+0E00ED 21 C6 11 00       		cmpw (bp+$11),(bp+py)
+0E00F1 35 C6 11 00       		cmpw (px+$11),(bp+py)
+0E00F5 25 C6 00 00       		cmpw (bp+px),(bp+py)
+0E00F9                   	; cmpp (int),(int)
+0E00F9 32 C7 11 22       		cmpp ($11),($22)
+0E00FD 22 C7 11 22       		cmpp (bp+$11),($22)
+0E0101 36 C7 11 22       		cmpp (px+$11),($22)
+0E0105 26 C7 00 22       		cmpp (bp+px),($22)
+0E0109                   		
+0E0109 30 C7 11 22       		cmpp ($11),(bp+$22)
+0E010D C7 11 22          		cmpp (bp+$11),(bp+$22)
+0E0110 34 C7 11 22       		cmpp (px+$11),(bp+$22)
+0E0114 24 C7 00 22       		cmpp (bp+px),(bp+$22)
+0E0118                   		
+0E0118 33 C7 11 22       		cmpp ($11),(py+$22)
+0E011C 23 C7 11 22       		cmpp (bp+$11),(py+$22)
+0E0120 37 C7 11 22       		cmpp (px+$11),(py+$22)
+0E0124 27 C7 00 22       		cmpp (bp+px),(py+$22)
+0E0128                   		
+0E0128 31 C7 11 00       		cmpp ($11),(bp+py)
+0E012C 21 C7 11 00       		cmpp (bp+$11),(bp+py)
+0E0130 35 C7 11 00       		cmpp (px+$11),(bp+py)
+0E0134 25 C7 00 00       		cmpp (bp+px),(bp+py)
+0E0138                   		end
+
+  No fatal error.  Code: 0E0000h - 0E0137h [      312 byte(s)]

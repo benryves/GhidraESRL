@@ -1,0 +1,11 @@
+000000                   	; Transmission Command Between a and b
+0E0000                   		org $E0000
+0E0000                   		pre_on
+0E0000                   	; mv r8,r8
+0E0000                   		
+0E0000 75                		mv b,a
+0E0001 74                		mv a,b
+0E0002                   		
+0E0002                   		end
+
+  No fatal error.  Code: 0E0000h - 0E0001h [        2 byte(s)]

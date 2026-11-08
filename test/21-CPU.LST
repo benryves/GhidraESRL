@@ -1,0 +1,12 @@
+000000                   	; CPU Control Command
+0E0000                   		org $E0000
+0E0000                   		pre_on
+0E0000                   		
+0E0000 EF                		wait
+0E0001 00                		nop
+0E0002 CE                		tcl
+0E0003 DE                		halt
+0E0004 DF                		off
+0E0005                   		end
+
+  No fatal error.  Code: 0E0000h - 0E0004h [        5 byte(s)]

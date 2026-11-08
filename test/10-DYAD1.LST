@@ -1,0 +1,258 @@
+000000                   	; Dyadic Operation No.1 (Add/Subtract Command)
+0E0000                   		org $E0000
+0E0000                   		pre_on
+0E0000                   	; add/sub a,n
+0E0000 40 11             		add a,$11
+0E0002 48 11             		sub a,$11
+0E0004                   		
+0E0004                   	; adc/sbc a,n
+0E0004                   		
+0E0004 50 11             		adc a,$11
+0E0006 58 11             		sbc a,$11
+0E0008                   	; add/sub (int),n
+0E0008 30 41 11 22       		add ($11),$22
+0E000C 41 11 22          		add (bp+$11),$22
+0E000F 34 41 11 22       		add (px+$11),$22
+0E0013 24 41 00 22       		add (bp+px),$22
+0E0017                   		
+0E0017 30 49 11 22       		sub ($11),$22
+0E001B 49 11 22          		sub (bp+$11),$22
+0E001E 34 49 11 22       		sub (px+$11),$22
+0E0022 24 49 00 22       		sub (bp+px),$22
+0E0026                   	; adc/sbc (int),n
+0E0026 30 51 11 22       		adc ($11),$22
+0E002A 51 11 22          		adc (bp+$11),$22
+0E002D 34 51 11 22       		adc (px+$11),$22
+0E0031 24 51 00 22       		adc (bp+px),$22
+0E0035                   		
+0E0035 30 59 11 22       		sbc ($11),$22
+0E0039 59 11 22          		sbc (bp+$11),$22
+0E003C 34 59 11 22       		sbc (px+$11),$22
+0E0040 24 59 00 22       		sbc (bp+px),$22
+0E0044                   	; add/sub a,a
+0E0044 46 00             		add a,a
+0E0046 4E 00             		sub a,a
+0E0048                   	; add/sub il,a
+0E0048 46 10             		add il,a
+0E004A 4E 10             		sub il,a
+0E004C                   	; add/sub r16,a
+0E004C 44 20             		add ba,a
+0E004E 44 30             		add i,a
+0E0050                   		
+0E0050 4C 20             		sub ba,a
+0E0052 4C 30             		sub i,a
+0E0054                   	; add/sub r20,a
+0E0054 45 40             		add x,a
+0E0056 45 50             		add y,a
+0E0058 45 60             		add u,a
+0E005A 45 70             		add s,a
+0E005C                   		
+0E005C 4D 40             		sub x,a
+0E005E 4D 50             		sub y,a
+0E0060 4D 60             		sub u,a
+0E0062 4D 70             		sub s,a
+0E0064                   	; add/sub (int),a
+0E0064 30 43 11          		add ($11),a
+0E0067 43 11             		add (bp+$11),a
+0E0069 34 43 11          		add (px+$11),a
+0E006C 24 43 00          		add (bp+px),a
+0E006F                   		
+0E006F 30 4B 11          		sub ($11),a
+0E0072 4B 11             		sub (bp+$11),a
+0E0074 34 4B 11          		sub (px+$11),a
+0E0077 24 4B 00          		sub (bp+px),a
+0E007A                   	; adc/sbc (int),a
+0E007A 30 53 11          		adc ($11),a
+0E007D 53 11             		adc (bp+$11),a
+0E007F 34 53 11          		adc (px+$11),a
+0E0082 24 53 00          		adc (bp+px),a
+0E0085                   		
+0E0085 30 5B 11          		sbc ($11),a
+0E0088 5B 11             		sbc (bp+$11),a
+0E008A 34 5B 11          		sbc (px+$11),a
+0E008D 24 5B 00          		sbc (bp+px),a
+0E0090                   	; adcl/sbcl (int),a
+0E0090 30 55 11          		adcl ($11),a
+0E0093 55 11             		adcl (bp+$11),a
+0E0095 34 55 11          		adcl (px+$11),a
+0E0098 24 55 00          		adcl (bp+px),a
+0E009B                   		
+0E009B 30 5D 11          		sbcl ($11),a
+0E009E 5D 11             		sbcl (bp+$11),a
+0E00A0 34 5D 11          		sbcl (px+$11),a
+0E00A3 24 5D 00          		sbcl (bp+px),a
+0E00A6                   	; dadl/dsbl (int),a
+0E00A6 30 C5 11          		dadl ($11),a
+0E00A9 C5 11             		dadl (bp+$11),a
+0E00AB 34 C5 11          		dadl (px+$11),a
+0E00AE 24 C5 00          		dadl (bp+px),a
+0E00B1                   		
+0E00B1 30 D5 11          		dsbl ($11),a
+0E00B4 D5 11             		dsbl (bp+$11),a
+0E00B6 34 D5 11          		dsbl (px+$11),a
+0E00B9 24 D5 00          		dsbl (bp+px),a
+0E00BC                   		
+0E00BC                   	; add/sub a,il
+0E00BC                   		
+0E00BC 46 01             		add a,il
+0E00BE                   		
+0E00BE                   	; add/sub il,il
+0E00BE 46 11             		add il,il
+0E00C0 4E 11             		sub il,il
+0E00C2                   	; add/sub r16,il
+0E00C2                   		
+0E00C2 45 41             		add x,il
+0E00C4 45 51             		add y,il
+0E00C6 45 61             		add u,il
+0E00C8 45 71             		add s,il
+0E00CA                   		
+0E00CA 4D 41             		sub x,il
+0E00CC 4D 51             		sub y,il
+0E00CE 4D 61             		sub u,il
+0E00D0 4D 71             		sub s,il
+0E00D2                   	; add/sub a,r16
+0E00D2 46 02             		add a,ba
+0E00D4 46 03             		add a,i
+0E00D6                   		
+0E00D6 4E 02             		sub a,ba
+0E00D8 4E 03             		sub a,i
+0E00DA                   	; add/sub il,r16
+0E00DA 46 12             		add il,ba
+0E00DC 46 13             		add il,i
+0E00DE                   		
+0E00DE 4E 12             		sub il,ba
+0E00E0 4E 13             		sub il,i
+0E00E2                   	; add/sub r16,r16
+0E00E2 44 22             		add ba,ba
+0E00E4 44 32             		add i,ba
+0E00E6                   		
+0E00E6 44 23             		add ba,i
+0E00E8 44 33             		add i,i
+0E00EA                   		
+0E00EA 4C 22             		sub ba,ba
+0E00EC 4C 32             		sub i,ba
+0E00EE                   		
+0E00EE 4C 23             		sub ba,i
+0E00F0 4C 33             		sub i,i
+0E00F2                   	; add/sub r20,r16
+0E00F2 45 42             		add x,ba
+0E00F4 45 52             		add y,ba
+0E00F6 45 62             		add u,ba
+0E00F8 45 72             		add s,ba
+0E00FA                   		
+0E00FA 45 43             		add x,i
+0E00FC 45 53             		add y,i
+0E00FE 45 63             		add u,i
+0E0100 45 73             		add s,i
+0E0102                   		
+0E0102 4D 42             		sub x,ba
+0E0104 4D 52             		sub y,ba
+0E0106 4D 62             		sub u,ba
+0E0108 4D 72             		sub s,ba
+0E010A                   		
+0E010A 4D 43             		sub x,i
+0E010C 4D 53             		sub y,i
+0E010E 4D 63             		sub u,i
+0E0110 4D 73             		sub s,i
+0E0112                   		
+0E0112                   	; add/sub a,(int)
+0E0112 30 42 22          		add a,($22)
+0E0115 42 22             		add a,(bp+$22)
+0E0117 34 42 22          		add a,(px+$22)
+0E011A 24 42 00          		add a,(bp+px)
+0E011D                   		
+0E011D 30 4A 22          		sub a,($22)
+0E0120 4A 22             		sub a,(bp+$22)
+0E0122 34 4A 22          		sub a,(px+$22)
+0E0125 24 4A 00          		sub a,(bp+px)
+0E0128                   	; adc/sbc a,(int)
+0E0128 30 52 22          		adc a,($22)
+0E012B 52 22             		adc a,(bp+$22)
+0E012D 34 52 22          		adc a,(px+$22)
+0E0130 24 52 00          		adc a,(bp+px)
+0E0133                   		
+0E0133 30 5A 22          		sbc a,($22)
+0E0136 5A 22             		sbc a,(bp+$22)
+0E0138 34 5A 22          		sbc a,(px+$22)
+0E013B 24 5A 00          		sbc a,(bp+px)
+0E013E                   	; adcl/sbcl (int),(int)
+0E013E 32 54 11 22       		adcl ($11),($22)
+0E0142 22 54 11 22       		adcl (bp+$11),($22)
+0E0146 36 54 11 22       		adcl (px+$11),($22)
+0E014A 26 54 00 22       		adcl (bp+px),($22)
+0E014E                   		
+0E014E 30 54 11 22       		adcl ($11),(bp+$22)
+0E0152 54 11 22          		adcl (bp+$11),(bp+$22)
+0E0155 34 54 11 22       		adcl (px+$11),(bp+$22)
+0E0159 24 54 00 22       		adcl (bp+px),(bp+$22)
+0E015D                   		
+0E015D 33 54 11 22       		adcl ($11),(py+$22)
+0E0161 23 54 11 22       		adcl (bp+$11),(py+$22)
+0E0165 37 54 11 22       		adcl (px+$11),(py+$22)
+0E0169 27 54 00 22       		adcl (bp+px),(py+$22)
+0E016D                   		
+0E016D 31 54 11 00       		adcl ($11),(bp+py)
+0E0171 21 54 11 00       		adcl (bp+$11),(bp+py)
+0E0175 35 54 11 00       		adcl (px+$11),(bp+py)
+0E0179 25 54 00 00       		adcl (bp+px),(bp+py)
+0E017D 32 5C 11 22       		sbcl ($11),($22)
+0E0181 22 5C 11 22       		sbcl (bp+$11),($22)
+0E0185 36 5C 11 22       		sbcl (px+$11),($22)
+0E0189 26 5C 00 22       		sbcl (bp+px),($22)
+0E018D                   		
+0E018D 30 5C 11 22       		sbcl ($11),(bp+$22)
+0E0191 5C 11 22          		sbcl (bp+$11),(bp+$22)
+0E0194 34 5C 11 22       		sbcl (px+$11),(bp+$22)
+0E0198 24 5C 00 22       		sbcl (bp+px),(bp+$22)
+0E019C                   		
+0E019C 33 5C 11 22       		sbcl ($11),(py+$22)
+0E01A0 23 5C 11 22       		sbcl (bp+$11),(py+$22)
+0E01A4 37 5C 11 22       		sbcl (px+$11),(py+$22)
+0E01A8 27 5C 00 22       		sbcl (bp+px),(py+$22)
+0E01AC                   		
+0E01AC 31 5C 11 00       		sbcl ($11),(bp+py)
+0E01B0 21 5C 11 00       		sbcl (bp+$11),(bp+py)
+0E01B4 35 5C 11 00       		sbcl (px+$11),(bp+py)
+0E01B8 25 5C 00 00       		sbcl (bp+px),(bp+py)
+0E01BC                   	; dadl/dsbl (int),(int)
+0E01BC 32 C4 11 22       		dadl ($11),($22)
+0E01C0 22 C4 11 22       		dadl (bp+$11),($22)
+0E01C4 36 C4 11 22       		dadl (px+$11),($22)
+0E01C8 26 C4 00 22       		dadl (bp+px),($22)
+0E01CC                   		
+0E01CC 30 C4 11 22       		dadl ($11),(bp+$22)
+0E01D0 C4 11 22          		dadl (bp+$11),(bp+$22)
+0E01D3 34 C4 11 22       		dadl (px+$11),(bp+$22)
+0E01D7 24 C4 00 22       		dadl (bp+px),(bp+$22)
+0E01DB                   		
+0E01DB 33 C4 11 22       		dadl ($11),(py+$22)
+0E01DF 23 C4 11 22       		dadl (bp+$11),(py+$22)
+0E01E3 37 C4 11 22       		dadl (px+$11),(py+$22)
+0E01E7 27 C4 00 22       		dadl (bp+px),(py+$22)
+0E01EB                   		
+0E01EB 31 C4 11 00       		dadl ($11),(bp+py)
+0E01EF 21 C4 11 00       		dadl (bp+$11),(bp+py)
+0E01F3 35 C4 11 00       		dadl (px+$11),(bp+py)
+0E01F7 25 C4 00 00       		dadl (bp+px),(bp+py)
+0E01FB 32 D4 11 22       		dsbl ($11),($22)
+0E01FF 22 D4 11 22       		dsbl (bp+$11),($22)
+0E0203 36 D4 11 22       		dsbl (px+$11),($22)
+0E0207 26 D4 00 22       		dsbl (bp+px),($22)
+0E020B                   		
+0E020B 30 D4 11 22       		dsbl ($11),(bp+$22)
+0E020F D4 11 22          		dsbl (bp+$11),(bp+$22)
+0E0212 34 D4 11 22       		dsbl (px+$11),(bp+$22)
+0E0216 24 D4 00 22       		dsbl (bp+px),(bp+$22)
+0E021A                   		
+0E021A 33 D4 11 22       		dsbl ($11),(py+$22)
+0E021E 23 D4 11 22       		dsbl (bp+$11),(py+$22)
+0E0222 37 D4 11 22       		dsbl (px+$11),(py+$22)
+0E0226 27 D4 00 22       		dsbl (bp+px),(py+$22)
+0E022A                   		
+0E022A 31 D4 11 00       		dsbl ($11),(bp+py)
+0E022E 21 D4 11 00       		dsbl (bp+$11),(bp+py)
+0E0232 35 D4 11 00       		dsbl (px+$11),(bp+py)
+0E0236 25 D4 00 00       		dsbl (bp+px),(bp+py)
+0E023A                   		end
+
+  No fatal error.  Code: 0E0000h - 0E0239h [      570 byte(s)]
