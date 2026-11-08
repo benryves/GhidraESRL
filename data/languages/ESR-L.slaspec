@@ -496,6 +496,10 @@ macro rd24(ret24, addr) { ptr:3 = addr; ret24 = *:3 ptr; }
 
 :MV R16H,R16L is op0_8=0xFD; R16H & R16L { R16H = R16L; }
 
+# mv r16,r20 ???
+
+:MV R16H,R20L is op0_8=0xFD; R16H & R20L { R16H = R20L[0, 15]; }
+
 # mv (int),r16
 
 :MV IntN16,R16L    is op0_8=0x30; op3_5=0b10100 & R16L; IntN16    { IntN16 = R16L;    }
@@ -799,6 +803,10 @@ macro rd24(ret24, addr) { ptr:3 = addr; ret24 = *:3 ptr; }
 # mv r20,r20
 
 :MV R20H,R20L is op0_8=0xFD; R20H & R20L { R20H = R20L; }
+
+# mv r20,r16 ???
+
+:MV R20H,R16L is op0_8=0xFD; R20H & R16L { R20H[0, 15] = R16L; }
 
 # mv (int),r20
 
